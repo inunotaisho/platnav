@@ -1,0 +1,232 @@
+@import (reference) '../global/variables.less';
+
+#platui {
+    #Button {
+        #platui > #variables;
+
+    /// ============= Default Button Colors ============== ///
+
+        @color: @white;
+        @background-color: @neutral-color;
+        @border-color: darken(@neutral-color, 10%);
+
+    /// ============= Button Sizes ============== ///
+
+        @border-width: 1px;
+        @button-font-size: 0.9em;
+        @border-radius: @global-border-radius;
+        @padding-vertical: 0.8em;
+        @padding-horizontal: 1.2em;
+
+    /// ====== Variable Button Styles ====== ///
+
+        .plat-button(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = color) {
+                color: @value;
+            }
+            & when (@prop = background-color) {
+                background-color: @value;
+
+                &:active,
+                &.plat-selected {
+                    background-color: darken(@value, 10%);
+                }
+
+                &.button-disabled,
+                &[disabled],
+                &:disabled {
+                    background-color: @value;
+                }
+
+                &.button-outline {
+                    border-color: @value;
+                    color: @value;
+
+                    &:active,
+                    &.plat-selected {
+                        background-color: @value;
+                    }
+
+                    &.button-disabled,
+                    &[disabled],
+                    &:disabled {
+                        color: @value;
+                    }
+                }
+            }
+            & when (@prop = border-color) {
+                border-color: @value;
+            }
+            & when (@prop = border-width) {
+                border-width: @value;
+            }
+            & when (@prop = button-font-size) {
+                font-size: @value;
+            }
+            & when (@prop = border-radius) {
+                .border-radius(@value);
+            }
+            & when (@prop = padding-vertical) {
+                padding-top: @value;
+                padding-bottom: @value;
+            }
+            & when (@prop = padding-horizontal) {
+                padding-left: @value;
+                padding-right: @value;
+            }
+        }
+
+    /// ============== Variable Button Group Styles =============== ///
+
+        .plat-button-group(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = border-radius) {
+                & > .plat-button:nth-of-type(1),
+                & > .button:nth-of-type(1) {
+                    .border-top-left-radius(@value);
+                    .border-bottom-left-radius(@value);
+                }
+
+                & > .plat-button:nth-last-of-type(1),
+                & > .button:nth-last-of-type(1) {
+                    .border-top-right-radius(@value);
+                    .border-bottom-right-radius(@value);
+                }
+            }
+        }
+    }
+
+    #controls {
+    /// ====== Variable Button Styles ====== ///
+
+        .plat-button(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (@value = undefined) {
+                .border-radius(@border-radius);
+                padding: @padding-vertical @padding-horizontal;
+                background-color: @background-color;
+                color: @color;
+                border-width: @border-width;
+                border-color: @border-color;
+                font-size: @button-font-size;
+
+                &:active,
+                &.plat-selected {
+                    background-color: darken(@background-color, 10%);
+                }
+
+                &.button-disabled,
+                &[disabled],
+                &:disabled {
+                    background-color: @background-color;
+                }
+
+                &.button-outline {
+                    border-color: @background-color;
+                    color: @background-color;
+
+                    &:active,
+                    &.plat-selected {
+                        background-color: @background-color;
+                    }
+
+                    &.button-disabled,
+                    &[disabled],
+                    &:disabled {
+                        color: @background-color;
+                    }
+                }
+            }
+            & when (@prop = color) {
+                color: @value;
+            }
+            & when (@prop = background-color) {
+                background-color: @value;
+
+                &:active,
+                &.plat-selected {
+                    background-color: darken(@value, 10%);
+                }
+
+                &.button-disabled,
+                &[disabled],
+                &:disabled {
+                    background-color: @value;
+                }
+
+                &.button-outline {
+                    border-color: @value;
+                    color: @value;
+
+                    &:active,
+                    &.plat-selected {
+                        background-color: @value;
+                    }
+
+                    &.button-disabled,
+                    &[disabled],
+                    &:disabled {
+                        color: @value;
+                    }
+                }
+            }
+            & when (@prop = border-color) {
+                border-color: @value;
+            }
+            & when (@prop = border-width) {
+                border-width: @value;
+            }
+            & when (@prop = button-font-size) {
+                font-size: @value;
+            }
+            & when (@prop = border-radius) {
+                .border-radius(@value);
+            }
+            & when (@prop = padding-vertical) {
+                padding-top: @value;
+                padding-bottom: @value;
+            }
+            & when (@prop = padding-horizontal) {
+                padding-left: @value;
+                padding-right: @value;
+            }
+        }
+
+    /// ============== Variable Button Group Styles =============== ///
+
+        .plat-button-group(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (@value = undefined) {
+                & > .plat-button:nth-of-type(1),
+                & > .button:nth-of-type(1) {
+                    .border-top-left-radius(@border-radius);
+                    .border-bottom-left-radius(@border-radius);
+                }
+
+                & > .plat-button:nth-last-of-type(1),
+                & > .button:nth-last-of-type(1) {
+                    .border-top-right-radius(@border-radius);
+                    .border-bottom-right-radius(@border-radius);
+                }
+            }
+            & when (@prop = border-radius) {
+                & > .plat-button:nth-of-type(1),
+                & > .button:nth-of-type(1) {
+                    .border-top-left-radius(@value);
+                    .border-bottom-left-radius(@value);
+                }
+
+                & > .plat-button:nth-last-of-type(1),
+                & > .button:nth-last-of-type(1) {
+                    .border-top-right-radius(@value);
+                    .border-bottom-right-radius(@value);
+                }
+            }
+        }
+    }
+}

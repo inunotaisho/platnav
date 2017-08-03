@@ -1,0 +1,134 @@
+﻿#platui {
+    #variables {
+        /// ============= Global Colors ============== ///
+
+        /// Brand Colors
+
+        @primary-color: @blue;
+        @secondary-color: @purple;
+
+        /// State/Action Colors
+
+        @success-color: @green;
+        @danger-color: @red;
+        @caution-color: @yellow;
+        @neutral-color: @grey;
+
+
+        /// ========= Default Color Palette ========== ///
+
+        /// Red
+        @pale-red: #e6b3b3;
+        @red: #ef716f;
+        @red-offset: #dd4d4e;
+
+        /// Blue
+        @pale-blue: #b3dbe6;
+        @blue: #2d97d2;
+        @blue-offset: #2d88be;
+
+        /// Green
+        @pale-green: #b3e6bf;
+        @green: #53c670;
+        @green-offset: #3ea357;
+
+        /// Yellow
+        @pale-yellow: #e6dcb3;
+        @yellow: #e2c95a;
+        @yellow-offset: #d2b537;
+
+        /// Brown
+        @pale-brown: #e6c9b3;
+        @brown: #bf7740;
+        @tan: #e09e6c;
+
+        /// Orange
+        @orange: #f0862c;
+
+        /// Purple
+        @purple: #A283A5;
+
+        /// Greyscale
+        @pale-grey: #edecec;
+        @grey: #c8c7cd;
+        @black: #000000;
+        @white: #ffffff;
+        @transparent: transparent;
+
+        /// =============== Typography ================ ///
+
+        @default-font-size: 16px;
+        @default-font-type: @font-sans-serif;
+        @default-font-color: #444444;
+        @font-sans-serif: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        @font-serif: Georgia, "Times New Roman", Times, serif;
+        @font-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+        /// Mixin Vars
+
+        @webkit: -webkit-;
+        @moz: -moz-;
+        @ms: -ms-;
+        @khtml: -khtml-;
+        @vanilla: -;
+
+        @webkit-list: @webkit, @vanilla;
+        @ms-list: @ms, @vanilla;
+        @moz-list: @moz, @vanilla;
+        @webkit-moz-list: @webkit, @moz, @vanilla;
+        @webkit-moz-strict: @webkit, @moz;
+        @webkit-moz-ms-list: @webkit, @moz, @ms, @vanilla;
+        @webkit-moz-ms-strict: @webkit, @moz, @ms;
+        @all-list: @webkit, @moz, @ms, @khtml, @vanilla;
+
+        /// =============== Animations ================ ///
+
+        @fade-in: FADE_IN;
+        @fade-out: FADE_OUT;
+        @slide-in: SLIDE_IN;
+        @slide-out: SLIDE_OUT;
+        @slide-in-fade-in: SLIDE_IN_FADE_IN;
+        @slide-out-fade-out: SLIDE_OUT_FADE_OUT;
+
+        /// ============== Various Sizes ============== ///
+
+        @global-border-radius: 2px;
+        @global-indicator-diameter: 1.2em;
+        @global-touch-diameter: 1.5em;
+        @global-max-z-index: 999999;
+        @global-hidden-left: -99999px;
+
+        /// ========= Responsive Breakpoints ========= ///
+
+        /// Currently used in the grid system and in Typography
+
+        /// Phone Breakpoint
+        @phone-alias: phn;
+        @phone-start: 0px;
+        @phone-end: 499px;
+
+        /// Phablet Breakpoint
+        @phablet-alias: phb;
+        @phablet-start: 500px;
+        @phablet-end: 699px;
+
+        /// Tablet Breakpoint
+        @tablet-alias: tab;
+        @tablet-start: 700px;
+        @tablet-end: 899px;
+
+        /// Desktop Breakpoint
+        @desktop-alias: dsk;
+        @desktop-start: 900px;
+        @desktop-end: 1099px;
+
+        /// HD Breakpoint
+        @hd-alias: hd;
+        @hd-start: 1100px;
+        @hd-end: 1299px;
+
+        /// XHD Breakpoint
+        @xhd-alias: xhd;
+        @xhd-start: 1300px;
+    }
+}

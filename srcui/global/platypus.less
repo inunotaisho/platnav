@@ -1,0 +1,236 @@
+﻿@import (reference) 'variables.less';
+@import (reference) '../mixins/helpers.less';
+
+/// ======= Globally Set Styles for PlatypusUI ======== ///
+& {
+    #platui > #variables;
+    #platui > #mixins;
+
+    html {
+        .fill();
+    }
+
+    body {
+        .fill();
+        position: relative;
+    }
+
+    [plat-control="plat-viewport"] {
+        .fill();
+        .box-sizing(border-box);
+        position: relative;
+    }
+
+    .plat-viewcontrol {
+        .box-sizing(border-box);
+        position: relative;
+        width: 100%;
+        margin: 0;
+    }
+
+    .plat-viewport-animate {
+        & > .plat-viewcontrol {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    }
+
+    .plat-hide,
+    [plat-hide] {
+        display: none !important;
+    }
+
+    .plat-hidden,
+    [plat-hidden] {
+        visibility: hidden !important;
+    }
+
+    /** Partially adapted from normalize.css | MIT License | http://necolas.github.io/normalize.css/ **/
+
+    a {
+	    color: @primary-color;
+	    text-decoration: none;
+	    background-color: transparent;
+
+	    &:active,
+	    &:hover {
+		    outline: 0;
+	    }
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    main,
+    menu,
+    nav,
+    section,
+    summary {
+	    display: block;
+    }
+
+    audio,
+    canvas,
+    progress,
+    video {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    audio:not([controls]) {
+	    display: none;
+	    height: 0;
+    }
+
+    [hidden],
+    template {
+	    display: none;
+    }
+
+    img {
+        border: 0;
+    }
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+
+    figure {
+        margin: 1em 40px;
+    }
+
+    hr {
+	    .box-sizing(content-box);
+	    height: 0;
+    }
+
+    pre {
+        overflow: auto;
+    }
+
+    code,
+    kbd,
+    pre,
+    samp {
+	    font-family: monospace, monospace;
+	    font-size: 1em;
+    }
+
+    button {
+        overflow: visible;
+    }
+
+    button,
+    select {
+        text-transform: none;
+    }
+
+    input,
+    select {
+        .box-sizing(border-box);
+        border: 1px solid lighten(@default-font-color, 35%);
+        padding: 0 0.25em;
+        height: 1.5em;
+        outline: none;
+
+        &:focus {
+            border-color: @default-font-color;
+        }
+    }
+
+    button,
+    select,
+    input {
+        .border-radius(0px);
+        line-height: normal;
+        font: inherit;
+    }
+
+    select {
+        vertical-align: baseline;
+    }
+
+    input {
+        vertical-align: baseline;
+    }
+
+    button,
+    html input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+
+    button[disabled],
+    html input[disabled] {
+        cursor: default;
+    }
+
+    button::-moz-focus-inner,
+    input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        .box-sizing(border-box);
+        padding: 0;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    input[type="search"] {
+        .box-sizing(content-box);
+        -webkit-appearance: textfield;
+    }
+
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        border: 1px solid #c0c0c0;
+        margin: 0 2px;
+        padding: 0.35em 0.625em 0.75em;
+    }
+
+    legend {
+        border: 0;
+        padding: 0;
+    }
+
+    textarea {
+        overflow: auto;
+    }
+
+    optgroup {
+        font-weight: bold;
+    }
+
+    ul {
+        margin: 1em 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    td,
+    th {
+        padding: 0;
+    }
+}

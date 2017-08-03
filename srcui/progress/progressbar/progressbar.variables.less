@@ -1,0 +1,162 @@
+﻿@import (reference) '../../global/variables.less';
+
+#platui {
+    #ProgressBar {
+        #platui > #variables;
+
+    /// =========== Progress Bar Colors =========== ///
+
+        @fill-color: darken(@neutral-color, 10%);
+        @empty-color: lighten(@neutral-color, 10%);
+
+    /// =========== Progress Bar Properties =========== ///
+
+        @height: 0.5em;
+        @border: none;
+        @border-radius: 8px;
+        @fill-radius: 4px;
+
+    /// =========== Progress Bar Transition =========== ///
+
+        @transition-time: 0s;
+        @transition-function: linear;
+
+    /// =========== Variable Progress Bar Styles =========== ///
+
+        .plat-progress(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = fill-color) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = empty-color) {
+                .plat-progress-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = height) {
+                .plat-progress-container {
+                    height: @value;
+                }
+            }
+            & when (@prop = border) {
+                .plat-progress-container {
+                    border: @value;
+                }
+            }
+            & when (@prop = border-radius) {
+                .plat-progress-container {
+                    .border-radius(@value);
+                }
+            }
+            & when (@prop = fill-radius) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        .border-radius(@value);
+                    }
+                }
+            }
+            & when (@prop = transition-time) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        &.plat-transition-init {
+                            .transition-duration(@value);
+                        }
+                    }
+                }
+            }
+            & when (@prop = transition-function) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        &.plat-transition-init {
+                            .transition-timing-function(@value);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #controls {
+        /// =========== Variable Progress Bar Styles =========== ///
+
+        .plat-progress(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (@value = undefined) {
+                .plat-progress-container {
+                    .border-radius(@border-radius);
+                    height: @height;
+                    background-color: @empty-color;
+                    border: @border;
+
+                    .plat-animated-bar {
+                        .border-radius(@fill-radius);
+                        background-color: @fill-color;
+
+                        &.plat-transition-init {
+                            .transition-duration(@transition-time);
+                            .transition-timing-function(@transition-function);
+                        }
+                    }
+                }
+            }
+            & when (@prop = fill-color) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = empty-color) {
+                .plat-progress-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = height) {
+                .plat-progress-container {
+                    height: @value;
+                }
+            }
+            & when (@prop = border) {
+                .plat-progress-container {
+                    border: @value;
+                }
+            }
+            & when (@prop = border-radius) {
+                .plat-progress-container {
+                    .border-radius(@value);
+                }
+            }
+            & when (@prop = fill-radius) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        .border-radius(@value);
+                    }
+                }
+            }
+            & when (@prop = transition-time) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        &.plat-transition-init {
+                            .transition-duration(@value);
+                        }
+                    }
+                }
+            }
+            & when (@prop = transition-function) {
+                .plat-progress-container {
+                    .plat-animated-bar {
+                        &.plat-transition-init {
+                            .transition-timing-function(@value);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

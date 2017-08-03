@@ -1,0 +1,258 @@
+﻿@import (reference) '../global/variables.less';
+@import (reference) '../animations/animations.variables.less';
+
+#platui {
+    #Listview {
+        #platui > #variables;
+
+    /// =========== Listview Colors =========== ///
+
+        @manipulated-viewport-background-color: @white;
+
+    /// =========== Listview Animations =========== ///
+
+        @refresh-transition-time: 200ms;
+
+        @enter-init: {
+            opacity: 0;
+        };
+
+        @enter-animation-name: LISTVIEW_ITEM_ENTER;
+        @enter-animation-duration: 300ms;
+        @leave-animation-name: LISTVIEW_ITEM_LEAVE;
+        @leave-animation-duration: 300ms;
+
+    /// =========== Listview Animation Mixins =========== ///
+
+        .enter(@name) {
+            #platui > #animations > .keyframes(@name);
+            .frames(@prefix) {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .leave(@name) {
+            #platui > #animations > .keyframes(@name);
+            .frames(@prefix) {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+    /// =========== Variable Listview Styles =========== ///
+
+        .plat-listview(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = enter-animation-name) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter {
+                                    .animation-name(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = enter-animation-duration) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter {
+                                    .animation-duration(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = leave-animation-name) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-leave {
+                                    .animation-name(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = leave-animation-duration) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-leave {
+                                    .animation-duration(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = manipulated-viewport-background-color) {
+                .plat-listview-viewport {
+                    &.plat-manipulation-prep {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = refresh-transition-time) {
+                .plat-listview-viewport {
+                    &.plat-transition-init {
+                        .transition-duration(@value);
+                    }
+                }
+            }
+            & when (@prop = enter-init) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter-init {
+                                    @value();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #controls {
+        /// =========== Variable Listview Styles =========== ///
+
+        .plat-listview(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (value = undefined) {
+                .plat-listview-viewport {
+                    &.plat-manipulation-prep {
+                        background-color: @manipulated-viewport-background-color;
+                    }
+
+                    &.plat-transition-init {
+                        .transition-duration(@refresh-transition-time);
+                    }
+                }
+
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter-init {
+                                    @enter-init();
+                                }
+
+                                .plat-enter {
+                                    .animation-name(@enter-animation-name);
+                                    .animation-duration(@enter-animation-duration);
+                                }
+
+                                .plat-leave {
+                                    .animation-name(@leave-animation-name);
+                                    .animation-duration(@leave-animation-duration);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = enter-animation-name) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter {
+                                    .animation-name(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = enter-animation-duration) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter {
+                                    .animation-duration(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = leave-animation-name) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-leave {
+                                    .animation-name(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = leave-animation-duration) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-leave {
+                                    .animation-duration(@value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & when (@prop = manipulated-viewport-background-color) {
+                .plat-listview-viewport {
+                    &.plat-manipulation-prep {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = refresh-transition-time) {
+                .plat-listview-viewport {
+                    &.plat-transition-init {
+                        .transition-duration(@value);
+                    }
+                }
+            }
+            & when (@prop = enter-init) {
+                &.plat-animated {
+                    .plat-listview-viewport {
+                        .plat-scroll-container {
+                            .plat-container {
+                                .plat-enter-init {
+                                    @value();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

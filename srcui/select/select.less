@@ -1,0 +1,88 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) '../mixins/touch.less';
+@import (reference) 'select.variables.less';
+
+/// ============= Select Constants ============= ///
+
+#platui {
+    #__Select {
+        #platui > #variables;
+        @checked-option-hover-color: @white;
+        @checked-option-hover-background-color: #1e90ff;
+    }
+}
+
+/// =========== Select Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Select;
+    #platui > #__Select;
+
+    .plat-select {
+        .box-sizing(border-box);
+        .border-radius(@border-radius);
+        .user-select(none);
+        .appearance(none);
+        display: inline-block;
+        height: @height;
+        color: @color;
+        background-color: @background-color;
+        outline: none;
+        margin: 0;
+        padding: 0 1.75em 0 0.5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border: @border-width solid @border-color;
+        background-position: 95% 50%;
+        background-position: -webkit-calc(~'100% - 0.5em') 50%;
+        background-position: calc(~'100% - 0.5em') 50%;
+        background-repeat: no-repeat;
+        background-size: 0.7em;
+        background-image: url(@caret);
+
+        &:focus {
+            border-color: @border-color-focus;
+        }
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        &::-ms-value {
+            color: @color;
+            background-color: @background-color;
+        }
+
+        &.select-light {
+            color: @color-light;
+            background-image: url(@caret-light);
+            border-color: @border-color-light;
+
+            &:focus {
+                border-color: @border-color-light-focus;
+            }
+
+            &::-ms-value {
+                color: @color-light;
+            }
+
+            option {
+                color: @color;
+            }
+        }
+
+        option:checked {
+            color: lighten(@checked-option-hover-color, 15%);
+            background-color: lighten(@checked-option-hover-background-color, 15%);
+        }
+
+        option:focus,
+        option:active,
+        option:hover {
+            color: @checked-option-hover-color;
+            background-color: @checked-option-hover-background-color;
+        }
+    }
+}

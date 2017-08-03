@@ -1,0 +1,145 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) '../mixins/transforms.less';
+@import (reference) '../mixins/transitions.less';
+@import (reference) 'toggle.variables.less';
+
+/// ============= Toggle Constants ============= ///
+
+#platui {
+    #__Toggle {
+        #platui > #Toggle;
+        @width: @height * @width-ratio;
+        @toggle-thin-height: @height * @toggle-thin-ratio;
+        @half-thin-height: @toggle-thin-height / 2;
+        @toggle-thin-knob-radius: @height / 2;
+    }
+}
+
+/// ========== Toggle Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #__Toggle;
+
+    .plat-toggle {
+        .flex-vertical-center(true);
+        .box-sizing(border-box);
+        cursor: pointer;
+
+        & > span:first-of-type {
+            padding-left: 0.4em;
+        }
+
+        .plat-toggle-container {
+            .flex(0 0 @width);
+            .border-radius(@height);
+            .box-sizing(content-box);
+            .translateZ(0);
+            .transition(~'background-color @{transition-time}, border-color @{transition-time}');
+            position: relative;
+            display: inline-block;
+            width: @width;
+            height: @height;
+            overflow: hidden;
+            background-color: @background-color;
+            border: 1px solid @border-color;
+
+            .plat-knob {
+                .border-radius(50%);
+                .box-sizing(border-box);
+                .translateZ(0);
+                .transition(left @transition-time);
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: @height;
+                width: @height;
+                background-color: @knob-color;
+            }
+
+            &.plat-slide {
+                border-color: @active-border-color;
+                background-color: @active-background-color;
+
+                .plat-knob {
+                    left: @width - @height;
+                }
+            }
+        }
+
+    /// ============== Toggle Square =============== ///
+
+        &.toggle-square {
+            .plat-toggle-container {
+                .border-radius(2px);
+
+                .plat-knob {
+                    .border-radius(2px);
+                }
+            }
+        }
+
+    /// =============== Toggle Thin ================ ///
+
+        &.toggle-thin {
+            .plat-toggle-container {
+                height: @toggle-thin-height;
+                overflow: visible;
+                background-color: @toggle-thin-background-color;
+                border: none;
+
+                .plat-knob {
+                    .box-shadow(2px 1px 2px 0px rgba(50, 50, 50, 0.15));
+                    top: @half-thin-height - @toggle-thin-knob-radius;
+                    border: 1px solid darken(@knob-color, 15%);
+                }
+
+                &.plat-slide {
+                    background-color: @active-background-color;
+
+                    .plat-knob {
+                        .box-shadow(-2px 1px 2px 0px rgba(50, 50, 50, 0.15));
+                        left: (@width - @height) * 1.05;
+                    }
+                }
+            }
+        }
+
+    /// =========== Toggle Color Options =========== ///
+
+        &.toggle-primary {
+            .plat-toggle-container.plat-slide {
+                background-color: @primary-color;
+                border-color: darken(@primary-color, 5%);
+            }
+        }
+
+        &.toggle-secondary {
+            .plat-toggle-container.plat-slide {
+                background-color: @secondary-color;
+                border-color: darken(@secondary-color, 5%);
+            }
+        }
+
+        &.toggle-success {
+            .plat-toggle-container.plat-slide {
+                background-color: @success-color;
+                border-color: darken(@success-color, 5%);
+            }
+        }
+
+        &.toggle-danger {
+            .plat-toggle-container.plat-slide {
+                background-color: @danger-color;
+                border-color: darken(@danger-color, 5%);
+            }
+        }
+
+        &.toggle-caution {
+            .plat-toggle-container.plat-slide {
+                background-color: @caution-color;
+                border-color: darken(@caution-color, 5%);
+            }
+        }
+    }
+}

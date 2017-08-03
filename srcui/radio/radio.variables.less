@@ -1,0 +1,228 @@
+@import (reference) '../global/variables.less';
+
+#platui {
+    #Radio {
+        #dependencies {
+            #platui > #variables;
+            @fill-color: @primary-color;
+            @empty-color: @transparent;
+        }
+
+        #platui > #Radio > #dependencies;
+
+    /// =========== Radio Colors =========== ///
+
+        @border-color: @grey;
+        @background-color: @empty-color;
+
+    /// =========== Active Radio Colors =========== ///
+
+        @mark-color: @fill-color;
+        @active-border-color: @fill-color;
+        @active-background-color: @empty-color;
+
+    /// =========== Radio Size =========== ///
+
+        @diameter: @global-indicator-diameter;
+        @border-width: 1px;
+        @mark-padding: 1px;
+
+    /// =========== Variable Radio Styles =========== ///
+
+        .plat-radio(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = fill-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        border-color: @value;
+
+                        .plat-mark {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = empty-color) {
+                .plat-radio-container {
+                    background-color: @value;
+
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = mark-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = background-color) {
+                .plat-radio-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = border-color) {
+                .plat-radio-container {
+                    border-color: @value;
+                }
+            }
+            & when (@prop = active-border-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = active-background-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = diameter) {
+                .plat-radio-container {
+                    .flex(0 0 @value);
+                    width: @value;
+                    max-width: @value;
+                    height: @value;
+                    max-height: @value;
+                }
+            }
+            & when (@prop = border-width) {
+                .plat-radio-container {
+                    border-width: @value;
+                }
+            }
+            & when (@prop = mark-padding) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-width: @value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #controls {
+        /// =========== Variable Radio Styles =========== ///
+
+        .plat-radio(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (@value = undefined) {
+                .plat-radio-container {
+                    .flex(0 0 @diameter);
+                    width: @diameter;
+                    max-width: @diameter;
+                    height: @diameter;
+                    max-height: @diameter;
+                    background-color: @background-color;
+                    border-width: @border-width;
+                    border-color: @border-color;
+
+                    &.plat-bullet {
+                        border-color: @active-border-color;
+
+                        .plat-mark {
+                            background-color: @mark-color;
+                            border-width: @mark-padding;
+                            border-color: @active-background-color;
+                        }
+                    }
+                }
+            }
+            & when (@prop = fill-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        border-color: @value;
+
+                        .plat-mark {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = empty-color) {
+                .plat-radio-container {
+                    background-color: @value;
+
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = mark-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = background-color) {
+                .plat-radio-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = border-color) {
+                .plat-radio-container {
+                    border-color: @value;
+                }
+            }
+            & when (@prop = active-border-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = active-background-color) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = diameter) {
+                .plat-radio-container {
+                    .flex(0 0 @value);
+                    width: @value;
+                    max-width: @value;
+                    height: @value;
+                    max-height: @value;
+                }
+            }
+            & when (@prop = border-width) {
+                .plat-radio-container {
+                    border-width: @value;
+                }
+            }
+            & when (@prop = mark-padding) {
+                .plat-radio-container {
+                    &.plat-bullet {
+                        .plat-mark {
+                            border-width: @value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

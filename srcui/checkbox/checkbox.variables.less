@@ -1,0 +1,254 @@
+@import (reference) '../global/variables.less';
+
+#platui {
+    #Checkbox {
+        #dependencies {
+            #platui > #variables;
+            @fill-color: @grey;
+        }
+
+        #platui > #Checkbox > #dependencies;
+
+    /// =========== Checkbox Colors =========== ///
+
+        @mark-color: @white;
+        @background-color: @transparent;
+        @border-color: @fill-color;
+
+    /// =========== Active Checkbox Colors =========== ///
+
+        @active-border-color: @fill-color;
+        @active-background-color: @fill-color;
+
+    /// =========== Checkbox Sizes ============ ///
+
+        @diameter: @global-indicator-diameter;
+        @border-width: 1px;
+
+    /// =========== Variable Checkbox Styles =========== ///
+
+        .plat-checkbox(@prop; @value) {
+            #platui > #mixins;
+
+            & when (@prop = fill-color) {
+                .plat-checkbox-container {
+                    border-color: @value;
+
+                    &.plat-check,
+                    &.plat-x {
+                        background-color: @value;
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = mark-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = background-color) {
+                .plat-checkbox-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = border-color) {
+                .plat-checkbox-container {
+                    border-color: @value;
+                }
+            }
+            & when (@prop = active-border-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = active-background-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = diameter) {
+                & > span {
+                    line-height: @value;
+                }
+
+                .plat-checkbox-container {
+                    .flex(0 0 @value);
+                    width: @value;
+                    max-width: @value;
+                    height: @value;
+                    max-height: @value;
+
+                    &.plat-check {
+                        .plat-mark::before {
+                            width: @value / 2.6;
+                        }
+
+                        .plat-mark::after {
+                            width: @value / 1.7;
+                        }
+                    }
+
+                    &.plat-x {
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            width: @value / 1.5;
+                        }
+                    }
+                }
+            }
+            & when (@prop = border-width) {
+                .plat-checkbox-container {
+                    border-width: @value;
+                }
+            }
+        }
+    }
+
+    #controls {
+    /// =========== Variable Checkbox Styles =========== ///
+
+        .plat-checkbox(@prop: undefined; @value: undefined) {
+            #platui > #mixins;
+
+            & when (@prop = undefined), (@value = undefined) {
+                & > span {
+                    line-height: @diameter;
+                }
+
+                .plat-checkbox-container {
+                    .flex(0 0 @diameter);
+                    width: @diameter;
+                    max-width: @diameter;
+                    height: @diameter;
+                    max-height: @diameter;
+                    background-color: @background-color;
+                    border-width: @border-width;
+                    border-color: @border-color;
+
+                    &.plat-check,
+                    &.plat-x {
+                        background-color: @active-background-color;
+                        border-color: @active-border-color;
+
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            background-color: @mark-color;
+                        }
+                    }
+
+                    &.plat-check {
+                        .plat-mark::before {
+                            width: @diameter / 2.6;
+                        }
+
+                        .plat-mark::after {
+                            width: @diameter / 1.7;
+                        }
+                    }
+
+                    &.plat-x {
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            width: @diameter / 1.5;
+                        }
+                    }
+                }
+            }
+            & when (@prop = fill-color) {
+                .plat-checkbox-container {
+                    border-color: @value;
+
+                    &.plat-check,
+                    &.plat-x {
+                        background-color: @value;
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = mark-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            background-color: @value;
+                        }
+                    }
+                }
+            }
+            & when (@prop = background-color) {
+                .plat-checkbox-container {
+                    background-color: @value;
+                }
+            }
+            & when (@prop = border-color) {
+                .plat-checkbox-container {
+                    border-color: @value;
+                }
+            }
+            & when (@prop = active-border-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        border-color: @value;
+                    }
+                }
+            }
+            & when (@prop = active-background-color) {
+                .plat-checkbox-container {
+                    &.plat-check,
+                    &.plat-x {
+                        background-color: @value;
+                    }
+                }
+            }
+            & when (@prop = diameter) {
+                & > span {
+                    line-height: @value;
+                }
+
+                .plat-checkbox-container {
+                    .flex(0 0 @value);
+                    width: @value;
+                    max-width: @value;
+                    height: @value;
+                    max-height: @value;
+
+                    &.plat-check {
+                        .plat-mark::before {
+                            width: @value / 2.6;
+                        }
+
+                        .plat-mark::after {
+                            width: @value / 1.7;
+                        }
+                    }
+
+                    &.plat-x {
+                        .plat-mark::before,
+                        .plat-mark::after {
+                            width: @value / 1.5;
+                        }
+                    }
+                }
+            }
+            & when (@prop = border-width) {
+                .plat-checkbox-container {
+                    border-width: @value;
+                }
+            }
+        }
+    }
+}

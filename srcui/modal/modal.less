@@ -1,0 +1,361 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) '../mixins/touch.less';
+@import (reference) '../mixins/transforms.less';
+@import (reference) '../mixins/transitions.less';
+@import (reference) 'modal.variables.less';
+
+/// =========== Modal Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Modal;
+
+    .plat-modal {
+        .fill();
+        .box-sizing(border-box);
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: @global-max-z-index;
+        background-color: @backdrop-color;
+
+        .plat-modal-container {
+            .fill();
+            .scroll();
+            .box-sizing(border-box);
+            .backface-visibility(hidden);
+            .perspective(none);
+            position: absolute;
+            background-color: @background-color;
+            color: @color;
+
+            &.plat-no-transition,
+            &.plat-modal-transition.plat-fade {
+                top: 0;
+                left: 0;
+            }
+
+            &.plat-modal-transition {
+                .translateZ(0);
+
+                &.plat-right {
+                    .transition(@right-transition);
+                    top: 0;
+                    left: -100%;
+
+                    &.plat-activate {
+                        left: 0;
+                    }
+                }
+
+                &.plat-left {
+                    .transition(@left-transition);
+                    top: 0;
+                    right: -100%;
+
+                    &.plat-activate {
+                        right: 0;
+                    }
+                }
+
+                &.plat-down {
+                    .transition(@down-transition);
+                    top: -100%;
+                    left: 0;
+
+                    &.plat-activate {
+                        top: 0;
+                    }
+                }
+
+                &.plat-up {
+                    .transition(@up-transition);
+                    bottom: -100%;
+                    left: 0;
+
+                    &.plat-activate {
+                        bottom: 0;
+                    }
+                }
+
+                &.plat-fade {
+                    .transition(@fade-transition);
+                    opacity: 0;
+
+                    &.plat-activate {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &.modal-custom-width {
+            #platui > #Modal > #custom-width;
+
+            .plat-modal-container {
+                width: @width;
+                height: 100%;
+
+                &.plat-no-transition,
+                &.plat-modal-transition.plat-fade {
+                    top: 0;
+                    left: @x-offset;
+                }
+
+                &.plat-modal-transition {
+                    &.plat-right {
+                        top: 0;
+                        left: -50%;
+
+                        &.plat-activate {
+                            left: @x-offset;
+                        }
+                    }
+
+                    &.plat-left {
+                        top: 0;
+                        right: -50%;
+
+                        &.plat-activate {
+                            right: @x-offset;
+                        }
+                    }
+
+                    &.plat-down {
+                        top: -100%;
+                        left: @x-offset;
+
+                        &.plat-activate {
+                            top: 0;
+                        }
+                    }
+
+                    &.plat-up {
+                        bottom: -100%;
+                        left: @x-offset;
+
+                        &.plat-activate {
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+
+            &.modal-centered {
+                .plat-modal-container {
+                    &.plat-no-transition,
+                    &.plat-modal-transition.plat-fade,
+                    &.plat-modal-transition.plat-down,
+                    &.plat-modal-transition.plat-up {
+                        .translate-accelerate(-50%;0);
+                        left: 50%;
+                    }
+
+                    &.plat-modal-transition {
+                        &.plat-right {
+                            .translate-accelerate(-50%;0);
+
+                            &.plat-activate {
+                                left: 50%;
+                            }
+                        }
+
+                        &.plat-left {
+                            .translate-accelerate(50%;0);
+
+                            &.plat-activate {
+                                right: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.modal-custom-height {
+            #platui > #Modal > #custom-height;
+
+            .plat-modal-container {
+                width: 100%;
+                height: @height;
+
+                &.plat-no-transition,
+                &.plat-modal-transition.plat-fade {
+                    top: @y-offset;
+                    left: 0;
+                }
+
+                &.plat-modal-transition {
+                    &.plat-right {
+                        top: @y-offset;
+                        left: -100%;
+
+                        &.plat-activate {
+                            left: 0;
+                        }
+                    }
+
+                    &.plat-left {
+                        top: @y-offset;
+                        right: -100%;
+
+                        &.plat-activate {
+                            right: 0;
+                        }
+                    }
+
+                    &.plat-down {
+                        top: -50%;
+                        left: 0;
+
+                        &.plat-activate {
+                            top: @y-offset;
+                        }
+                    }
+
+                    &.plat-up {
+                        bottom: -50%;
+                        left: 0;
+
+                        &.plat-activate {
+                            bottom: @y-offset;
+                        }
+                    }
+                }
+            }
+
+            &.modal-centered {
+                .plat-modal-container {
+                    &.plat-no-transition,
+                    &.plat-modal-transition.plat-fade,
+                    &.plat-modal-transition.plat-right,
+                    &.plat-modal-transition.plat-left {
+                        .translate-accelerate(0;-50%);
+                        top: 50%;
+                    }
+
+                    &.plat-modal-transition {
+                        &.plat-down {
+                            .translate-accelerate(0;-50%);
+
+                            &.plat-activate {
+                                top: 50%;
+                            }
+                        }
+
+                        &.plat-up {
+                            .translate-accelerate(0;50%);
+
+                            &.plat-activate {
+                                bottom: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.modal-custom {
+            #platui > #Modal > #custom;
+
+            .plat-modal-container {
+                width: @width;
+                height: @height;
+
+                &.plat-no-transition,
+                &.plat-modal-transition.plat-fade {
+                    top: @y-offset;
+                    left: @x-offset;
+                }
+
+                &.plat-modal-transition {
+                    .plat-right {
+                        top: @y-offset;
+                        left: -@x-offset;
+
+                        &.plat-activate {
+                            left: @x-offset;
+                        }
+                    }
+
+                    &.plat-left {
+                        top: @y-offset;
+                        right: -@width;
+
+                        &.plat-activate {
+                            right: @x-offset;
+                        }
+                    }
+
+                    &.plat-down {
+                        top: -@height;
+                        left: @x-offset;
+
+                        &.plat-activate {
+                            top: @y-offset;
+                        }
+                    }
+
+                    &.plat-up {
+                        bottom: -@height;
+                        left: @x-offset;
+
+                        &.plat-activate {
+                            bottom: @y-offset;
+                        }
+                    }
+                }
+            }
+
+            &.modal-centered {
+                .plat-modal-container {
+                    &.plat-no-transition,
+                    &.plat-modal-transition.plat-fade {
+                        .translate-accelerate(-50%;-50%);
+                        top: 50%;
+                        left: 50%;
+                    }
+
+                    &.plat-modal-transition {
+                        &.plat-right {
+                            .translate-accelerate(-50%;-50%);
+                            top: 50%;
+
+                            &.plat-activate {
+                                left: 50%;
+                            }
+                        }
+
+                        &.plat-left {
+                            .translate-accelerate(50%;-50%);
+                            top: 50%;
+
+                            &.plat-activate {
+                                right: 50%;
+                            }
+                        }
+
+                        &.plat-down {
+                            .translate-accelerate(-50%;-50%);
+                            left: 50%;
+
+                            &.plat-activate {
+                                top: 50%;
+                            }
+                        }
+
+                        &.plat-up {
+                            .translate-accelerate(-50%;50%);
+                            left: 50%;
+
+                            &.plat-activate {
+                                bottom: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

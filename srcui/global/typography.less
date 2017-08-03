@@ -1,0 +1,152 @@
+@import (reference) 'variables.less';
+@import (reference) '../mixins/media.less';
+
+/// ======= Globally Set Styles for PlatypusUI ======== ///
+
+& {
+    #platui > #variables;
+    #platui > #mixins;
+    #platui > #media;
+
+    html,
+    body {
+	    font-family: @default-font-type;
+	    color: @default-font-color;
+        font-size: @default-font-size;
+        -webkit-font-smoothing: antialiased;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    blockquote {
+        .box-sizing(border-box);
+	    display: block;
+	    margin: 1em 0;
+	    padding-left: 1em;
+	    color: lighten(@default-font-color, 30%);
+	    font-size: @default-font-size;
+	    border-left: 1px solid lighten(@default-font-color, 30%);
+    }
+
+    cite {
+        .box-sizing(border-box);
+	    display: block;
+	    padding: 0.3em 0;
+	    font-size: @default-font-size * 0.9;
+    }
+
+    b,
+    strong {
+	    font-weight: bold;
+    }
+
+    dfn {
+        font-style: italic;
+    }
+
+    abbr[title] {
+        .box-sizing(border-box);
+        border-bottom: 1px dotted;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+	    font-size: 75%;
+	    line-height: 0;
+	    position: relative;
+	    vertical-align: baseline;
+    }
+
+    sup {
+        top: -0.5em;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    /** Font Sizes **/
+    /* Font sizes and line-height adjust based on the device-width. Device breakpoints */
+    /* are set in global/variables.less. Measurements adapted from Robert Bringhurst's */
+    /* classic and exhaustive work The Elements of Typographic Style. */
+
+    @typography-margin: 0.67em;
+
+    h1 {
+        .headings();
+        margin: @typography-margin 0 (@typography-margin / 1.25);
+
+        &:first-child,
+        &.no-collapse-top {
+            .box-sizing(border-box);
+            margin-top: 0;
+            padding-top: @typography-margin;
+        }
+
+        &.no-collapse-bottom {
+            .box-sizing(border-box);
+            margin-bottom: 0;
+            padding-bottom: @typography-margin / 1.25;
+        }
+    }
+
+    h2, h3, h4 {
+        .headings();
+        margin: (@typography-margin * 1.25) 0 @typography-margin;
+
+        &:first-child,
+        &.no-collapse-top {
+            .box-sizing(border-box);
+            margin-top: 0;
+            padding-top: @typography-margin * 1.25;
+        }
+
+        &.no-collapse-bottom {
+            .box-sizing(border-box);
+            margin-bottom: 0;
+            padding-bottom: @typography-margin;
+        }
+    }
+
+    h5, h6 {
+        .headings();
+        margin: (@typography-margin * 1.5) 0 (@typography-margin * 1.25);
+
+        &:first-child,
+        &.no-collapse-top {
+            .box-sizing(border-box);
+            margin-top: 0;
+            padding-top: @typography-margin * 1.5;
+        }
+
+        &.no-collapse-bottom {
+            .box-sizing(border-box);
+            margin-bottom: 0;
+            padding-bottom: @typography-margin * 1.25;
+        }
+    }
+
+    p {
+        padding: 0;
+        margin: (@typography-margin * 1.5) 0;
+
+        &:first-child,
+        &.no-collapse-top {
+            .box-sizing(border-box);
+            margin-top: 0;
+            padding-top: @typography-margin * 1.5;
+        }
+
+        &.no-collapse-bottom {
+            .box-sizing(border-box);
+            margin-bottom: 0;
+            padding-bottom: @typography-margin * 1.5;
+        }
+    }
+
+    .type-headings();
+}

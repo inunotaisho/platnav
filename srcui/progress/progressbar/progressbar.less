@@ -1,0 +1,71 @@
+﻿@import (reference) '../../mixins/helpers.less';
+@import (reference) '../../mixins/transforms.less';
+@import (reference) '../../mixins/transitions.less';
+@import (reference) 'progressbar.variables.less';
+
+/// =========== Progress Bar Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #ProgressBar;
+
+    .plat-progress {
+        .box-sizing(border-box);
+        width: 100%;
+
+        .plat-progress-container {
+            .border-radius(@border-radius);
+            .box-sizing(content-box);
+            .box-shadow(inset 0px 1px 1px 0px rgba(0,0,0,0.13));
+            position: relative;
+            height: @height;
+            width: 100%;
+            background-color: @empty-color;
+            overflow: hidden;
+            border: @border;
+
+            .plat-animated-bar {
+                .border-radius(@fill-radius);
+                .box-sizing(content-box);
+                .translateZ(0);
+                background-color: @fill-color;
+                width: 0;
+                height: 100%;
+
+                &.plat-transition-init {
+                    .transition(width @transition-time @transition-function);
+                }
+            }
+        }
+
+        &.progress-primary {
+            .plat-animated-bar {
+                background-color: @primary-color;
+            }
+        }
+
+        &.progress-secondary {
+            .plat-animated-bar {
+                background-color: @secondary-color;
+            }
+        }
+
+        &.progress-success {
+            .plat-animated-bar {
+                background-color: @success-color;
+            }
+        }
+
+        &.progress-danger {
+            .plat-animated-bar {
+                background-color: @danger-color;
+            }
+        }
+
+        &.progress-caution {
+            .plat-animated-bar {
+                background-color: @caution-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "platypus",
+  "version": "0.23.5",
+  "description": "A front-end MVVM framework written in TypeScript",
+  "main": "dist/platypus.js",
+  "devDependencies": {
+    "@types/jasmine": "latest",
+    "concurrently": "latest",
+    "glob": "latest",
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-ts": "latest",
+    "grunt-ts-bundle": "latest",
+    "http-server": "latest",
+    "jasmine-core": "latest",
+    "karma": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-cli": "latest",
+    "karma-coverage": "latest",
+    "karma-firefox-launcher": "latest",
+    "karma-html-reporter": "latest",
+    "karma-ie-launcher": "latest",
+    "karma-jasmine": "latest",
+    "load-grunt-tasks": "latest",
+    "lodash": "latest",
+    "rimraf": "latest",
+    "tsconfig-lint": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "prepublish": "npm run deploy",
+    "build": "npm run build:examples && npm run build:test && npm run build:src",
+    "build:examples": "tsc -p build/tsc/examples",
+    "build:src": "tsc -p .",
+    "build:test": "tsc -p build/tsc/test",
+    "clean": "rimraf examples/app.* dist/* src/**/*.js src/**/*.map test/**/*.js",
+    "clean:examples": "rimraf examples/app.*",
+    "clean:src": "rimraf dist/* src/**/*.js src/**/*.map",
+    "clean:test": "rimraf src/**/*.js src/**/*.map test/**/*.js",
+    "deploy": "grunt",
+    "examples": "npm start",
+    "karma": "karma start karma.conf.js",
+    "lint": "tsconfig-lint -u",
+    "start": "concurrent -r \"npm run watch:examples\" \"npm run server:examples\"",
+    "server:examples": "http-server -p 3000",
+    "test": "npm run build:test && npm run karma",
+    "watch:examples": "npm run build:examples -- -w",
+    "watch:src": "npm run build:src -- -w",
+    "watch:test": "npm run build:test -- -w"
+  },
+  "author": "Platypi <support@platypi.io> (https://platypi.io)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Platypi/platypusts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Platypi/platypusts/issues"
+  },
+  "homepage": "http://platypusts.com",
+  "typescript": {
+    "definition": "dist/platypus.d.ts"
+  },
+  "typings": "dist/platypus-local.d.ts"
+}

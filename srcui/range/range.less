@@ -1,0 +1,243 @@
+﻿@import (reference)'../mixins/helpers.less';
+@import (reference)'../mixins/touch.less';
+@import (reference)'../mixins/transforms.less';
+@import (reference)'../mixins/transitions.less';
+@import (reference) 'range.variables.less';
+
+/// ============= Range Constants ============= ///
+
+#platui {
+    #__Range {
+        #platui > #Range;
+        @knob-radius: @knob-diameter / 2;
+        @half-thickness: @thickness / 2;
+    }
+}
+
+/// ============= Range Declaration ============= ///
+
+& {
+    #platui > #mixins;
+    #platui > #__Range;
+
+    .plat-range {
+        .user-select(none);
+        .box-sizing(border-box);
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+
+        .plat-range-container {
+            .fill();
+            .border-radius(@border-radius);
+            .box-sizing(border-box);
+            position: relative;
+            overflow: visible;
+
+            .plat-range-track {
+                .box-shadow(inset 0px 1px 1px 0px darken(@fill-color, 10%));
+                .border-radius(@border-radius);
+                .box-sizing(border-box);
+                position: absolute;
+                background-color: @fill-color;
+                overflow: visible;
+
+                .plat-lower-knob,
+                .plat-upper-knob {
+                    .box-sizing(border-box);
+                    .border-radius(50%);
+                    .box-shadow(0px 1px 2px 0px rgba(50, 50, 50, 0.15));
+                    position: absolute;
+                    width: @knob-diameter;
+                    height: @knob-diameter;
+                    background-color: @knob-color;
+                    border: @knob-border-width solid @knob-border-color;
+                    cursor: pointer;
+                    z-index: 0;
+
+                    &.plat-top {
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+
+        &:not(.range-outline) {
+            .plat-range-container {
+                .box-shadow(inset 0px 1px 1px 0px darken(@empty-color, 10%));
+                background-color: @empty-color;
+            }
+        }
+
+        &.range-outline {
+            .plat-range-container {
+                border: @outline-border-width solid @outline-border-color;
+            }
+        }
+
+        &.plat-horizontal,
+        &.plat-horizontal-reversed {
+            .touch-action(pan-y);
+            height: @knob-diameter;
+            padding: 0 @knob-radius;
+
+            .plat-range-container {
+                .translate-accelerate(0;-@half-thickness);
+                top: 50%;
+                height: @thickness;
+
+                .plat-range-track {
+                    width: 100%;
+                    height: 100%;
+
+                    .plat-lower-knob,
+                    .plat-upper-knob {
+                        .translate-accelerate(0;-@knob-radius);
+                        top: @half-thickness;
+                    }
+
+                    .plat-lower-knob {
+                        left: -@knob-radius;
+                    }
+
+                    .plat-upper-knob {
+                        right: -@knob-radius;
+                    }
+                }
+            }
+        }
+
+        &.plat-horizontal {
+            .plat-range-container {
+                .plat-range-track {
+                    left: 0;
+
+                    &.plat-transition-init {
+                        .translateZ(0);
+                        .transition(~'width @{transition-time}, left @{transition-time}');
+                    }
+                }
+            }
+        }
+
+        &.plat-horizontal-reversed {
+            .plat-range-container {
+                .plat-range-track {
+                    right: 0;
+
+                    &.plat-transition-init {
+                        .translateZ(0);
+                        .transition(~'width @{transition-time}, right @{transition-time}');
+                    }
+                }
+            }
+        }
+
+        &.plat-vertical,
+        &.plat-vertical-reversed {
+            .touch-action(pan-x);
+            width: @knob-diameter;
+            padding: @knob-radius 0;
+
+            .plat-range-container {
+                .translate-accelerate(-@half-thickness;0);
+                left: 50%;
+                top: @knob-radius;
+                width: @thickness;
+
+                .plat-range-track {
+                    width: 100%;
+                    height: 0;
+
+                    .plat-lower-knob,
+                    .plat-upper-knob {
+                        .translate-accelerate(-@knob-radius;0);
+                        left: @half-thickness;
+                    }
+
+                    .plat-lower-knob {
+                        bottom: -@knob-radius;
+                    }
+
+                    .plat-upper-knob {
+                        top: -@knob-radius;
+                    }
+                }
+            }
+        }
+
+        &.plat-vertical {
+            .plat-range-container {
+                .plat-range-track {
+                    bottom: 0;
+
+                    &.plat-transition-init {
+                        .translateZ(0);
+                        .transition(~'height @{transition-time}, bottom @{transition-time}');
+                    }
+                }
+            }
+        }
+
+        &.plat-vertical-reversed {
+            .plat-range-container {
+                .plat-range-track {
+                    top: 0;
+
+                    &.plat-transition-init {
+                        .translateZ(0);
+                        .transition(~'height @{transition-time}, top @{transition-time}');
+                    }
+                }
+            }
+        }
+
+    /// =========== Slider Color Options =========== ///
+
+        &.range-primary {
+            .plat-range-container {
+                .plat-range-track {
+                    .box-shadow(inset 0px 1px 1px 0px darken(@primary-color, 10%));
+                    background-color: @primary-color;
+                }
+            }
+        }
+
+        &.range-secondary {
+            .plat-range-container {
+                .plat-range-track {
+                    .box-shadow(inset 0px 1px 1px 0px darken(@secondary-color, 10%));
+                    background-color: @secondary-color;
+                }
+            }
+        }
+
+        &.range-success {
+            .plat-range-container {
+                .plat-range-track {
+                    .box-shadow(inset 0px 1px 1px 0px darken(@success-color, 10%));
+                    background-color: @success-color;
+                }
+            }
+        }
+
+        &.range-caution {
+            .plat-range-container {
+                .plat-range-track {
+                    .box-shadow(inset 0px 1px 1px 0px darken(@caution-color, 10%));
+                    background-color: @caution-color;
+                }
+            }
+        }
+
+        &.range-danger {
+            .plat-range-container {
+                .plat-range-track {
+                    .box-shadow(inset 0px 1px 1px 0px darken(@danger-color, 10%));
+                    background-color: @danger-color;
+                }
+            }
+        }
+    }
+}

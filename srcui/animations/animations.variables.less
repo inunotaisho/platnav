@@ -1,0 +1,128 @@
+﻿@import (reference) '../global/variables.less';
+
+/// ======= Globally-Used Animations ======== ///
+
+#platui {
+    /// Animation Creation
+
+    #animations {
+        #platui > #variables;
+
+        .keyframes(@name) {
+            #platui > #variables;
+            @-webkit-keyframes @name {
+                .frames(@webkit);
+            }
+
+            @-moz-keyframes @name {
+                .frames(@moz);
+            }
+
+            @keyframes @name {
+                .frames(@vanilla);
+            }
+        }
+
+        .fade(@name: @fade-out; @direction: out) {
+            .keyframes(@name);
+            .frames(@prefix) {
+                & when (@direction = in) {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                } & when (@direction = out) {
+                    from {
+                        opacity: 1;
+                    }
+                    to {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+
+        .slide(@name: @slide-in; @direction: in; @from: right) {
+            .keyframes(@name);
+            .frames(@prefix) {
+                & when (@direction = in) {
+                    & when (@from = left) {
+                        from {
+                            left: -100%;
+                        }
+                    } & when (@from = right) {
+                        from {
+                            left: 100%;
+                        }
+                    }
+                } & when (@direction = out) {
+                    & when (@from = left) {
+                        to {
+                            left: -100%;
+                        }
+                    } & when (@from = right) {
+                        to {
+                            left: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .slideAndFade(@name: @slide-in-fade-in; @direction: in; @from-to: right) {
+            .keyframes(@name);
+            .frames(@prefix) {
+                & when (@direction = in) {
+                    & when (@from-to = left) {
+                        0% {
+                            left: -100%;
+                            opacity: 0;
+                        }
+                    } & when (@from-to = right) {
+                        0% {
+                            left: 100%;
+                            opacity: 0;
+                        }
+                    }
+                    25% {
+                        opacity: 0.1;
+                    }
+                    50% {
+                        opacity: 0.2;
+                    }
+                    75% {
+                        opacity: 0.3;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                } & when (@direction = out) {
+                    0% {
+                        opacity: 1;
+                    }
+                    25% {
+                        opacity: 0.3;
+                    }
+                    50% {
+                        opacity: 0.2;
+                    }
+                    75% {
+                        opacity: 0.1;
+                    } & when (@from-to = left) {
+                        100% {
+                            left: -100%;
+                            opacity: 0;
+                        }
+                    } & when (@from-to = right) {
+                        100% {
+                            left: 100%;
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

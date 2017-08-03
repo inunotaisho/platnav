@@ -1,0 +1,195 @@
+﻿@import (reference) '../global/variables.less';
+@import (reference) 'loopers.less';
+
+#platui {
+    #mixins {
+        /// Transforms
+
+        .transform(@args) {
+            #platui > #variables;
+            .transform(@args; @webkit-moz-ms-list);
+        }
+        .transform(@args; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(transform; @args; @vendor-list);
+        }
+
+        .transform-origin(@origin) {
+            #platui > #variables;
+            .transform-origin(@origin; @webkit-moz-ms-list);
+        }
+        .transform-origin(@origin; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(transform-origin; @origin; @vendor-list);
+        }
+
+        .transform-style(@style) {
+            #platui > #variables;
+            .transform-style(@style; @webkit-moz-list);
+        }
+        .transform-style(@style; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(transform-style; @style; @vendor-list);
+        }
+
+        .matrix(@args) {
+            .transform(matrix(@args));
+        }
+        .matrix(@args; @vendor-list) {
+            .transform(matrix(@args); @vendor-list);
+        }
+
+        .matrix3d(@args) {
+            .transform(matrix3d(@args));
+        }
+        .matrix3d(@args; @vendor-list) {
+            .transform(matrix3d(@args); @vendor-list);
+        }
+
+        .rotate(@a) {
+            .transform(rotate(@a));
+        }
+        .rotate(@a; @vendor-list) {
+            .transform(rotate(@a); @vendor-list);
+        }
+
+        .rotateX(@a) {
+            .transform(rotateX(@a));
+        }
+        .rotateX(@a; @vendor-list) {
+            .transform(rotateX(@a); @vendor-list);
+        }
+
+        .rotateY(@a) {
+            .transform(rotateY(@a));
+        }
+        .rotateY(@a; @vendor-list) {
+            .transform(rotateY(@a); @vendor-list);
+        }
+
+        .rotateZ(@a) {
+            .transform(rotateZ(@a));
+        }
+        .rotateZ(@a; @vendor-list) {
+            .transform(rotateZ(@a); @vendor-list);
+        }
+
+        .rotate3d(@x; @y; @z; @a) {
+            .transform(rotate3d(@x, @y, @z, @a));
+        }
+        .rotate3d(@x; @y; @z; @a; @vendor-list) {
+            .transform(rotate3d(@x, @y, @z, @a); @vendor-list);
+        }
+
+        .scale(@factor) {
+            .transform(scale(@factor));
+        }
+        .scale(@factor1; @factor2) {
+            .transform(scale(@factor1, @factor2));
+        }
+        .scale(@factor1; @factor2; @vendor-list) {
+            .transform(scale(@factor1, @factor2); @vendor-list);
+        }
+
+        .scaleX(@factor) {
+            .transform(scaleX(@factor));
+        }
+        .scaleX(@factor; @vendor-list) {
+            .transform(scaleX(@factor); @vendor-list);
+        }
+
+        .scaleY(@factor) {
+            .transform(scaleY(@factor));
+        }
+        .scaleY(@factor; @vendor-list) {
+            .transform(scaleY(@factor); @vendor-list);
+        }
+
+        .scaleZ(@factor) {
+            .transform(scaleZ(@factor));
+        }
+        .scaleZ(@factor; @vendor-list) {
+            .transform(scaleZ(@factor); @vendor-list);
+        }
+
+        .scale3d(@x; @y; @z) {
+            .transform(scale3d(@x, @y, @z));
+        }
+        .scale3d(@x; @y; @z; @vendor-list) {
+            .transform(scale3d(@x, @y, @z); @vendor-list);
+        }
+
+        .skew(@a) {
+            .transform(skew(@a));
+        }
+        .skew(@a1; @a2) {
+            .transform(skew(@a1, @a2));
+        }
+        .skew(@a1; @a2; @vendor-list) {
+            .transform(skew(@a1, @a2); @vendor-list);
+        }
+
+        .skewX(@a) {
+            .transform(skewX(@a));
+        }
+        .skewX(@a; @vendor-list) {
+            .transform(skewX(@a); @vendor-list);
+        }
+
+        .skewY(@a) {
+            .transform(skewY(@a));
+        }
+        .skewY(@a; @vendor-list) {
+            .transform(skewY(@a); @vendor-list);
+        }
+
+        .perspective(@value: none) {
+            #platui > #variables;
+            .perspective(@value; @webkit-moz-ms-list);
+        }
+        .perspective(@value; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(perspective; @value; @vendor-list);
+        }
+
+        .translate(@x; @y) {
+            .transform(translate(@x, @y));
+        }
+        .translate(@x; @y; @vendor-list) {
+            .transform(translate(@x, @y); @vendor-list);
+        }
+
+        .translateX(@x) {
+            .transform(translateX(@x));
+        }
+        .translateX(@x; @vendor-list) {
+            .transform(translateX(@x); @vendor-list);
+        }
+
+        .translateY(@y) {
+            .transform(translateY(@y));
+        }
+        .translateY(@y; @vendor-list) {
+            .transform(translateY(@y); @vendor-list);
+        }
+
+        .translateZ(@z) {
+            .transform(translateZ(@z));
+        }
+        .translateZ(@z; @vendor-list) {
+            .transform(translateZ(@z); @vendor-list);
+        }
+
+        .translate3d(@x; @y; @z) {
+            .transform(translate3d(@x, @y, @z));
+        }
+        .translate3d(@x; @y; @z; @vendor-list) {
+            .transform(translate3d(@x, @y, @z); @vendor-list);
+        }
+
+        .translate-accelerate(@x; @y) {
+            .translate(@x; @y);
+            .transform(translate3d(@x, @y, 0));
+        }
+        .translate-accelerate(@x; @y; @vendor-list) {
+            .translate(@x; @y; @vendor-list);
+            .transform(translate3d(@x, @y, 0); @vendor-list);
+        }
+    }
+}

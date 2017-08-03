@@ -1,0 +1,136 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) 'input.variables.less';
+
+/// =========== Input Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Input;
+
+    .plat-input {
+        .border-radius(0px);
+        .box-sizing(border-box);
+        .appearance(none);
+        display: inline-block;
+        width: @width;
+        height: @height;
+        background-color: @background-color;
+        color: @text-color;
+        border: none;
+        padding: 0;
+
+        &::-ms-clear,
+        &::-ms-reveal {
+            display: none;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+    /// =========== Placeholder Styling =========== ///
+
+        &::-webkit-input-placeholder {
+            color: @placeholder-color;
+        }
+
+        &::-moz-input-placeholder {
+            color: @placeholder-color;
+        }
+
+        &:-moz-input-placeholder {
+            color: @placeholder-color;
+        }
+
+        &:-ms-input-placeholder {
+            color: @placeholder-color;
+        }
+
+        &:not(.input-outline) {
+            border-bottom: @border-bottom-width @border-style @border-bottom-color;
+
+            &:focus {
+                border-color: @border-bottom-focus;
+            }
+        }
+
+    /// ============== Secondary Input =============== ///
+
+        &.input-outline {
+            .border-radius(@outline-border-radius);
+            border: @outline-border-width @border-style @outline-border-color;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+
+            &:focus {
+                border-color: @outline-border-focus;
+            }
+        }
+
+    /// ============== Input Types =============== ///
+
+        &.input-primary {
+            &:focus {
+                border-color: @primary-color;
+            }
+        }
+
+        &.input-secondary {
+            &:focus {
+                border-color: @secondary-color;
+            }
+        }
+
+        &.input-success {
+            &:focus {
+                border-color: @success-color;
+            }
+        }
+
+        &.input-caution {
+            &:focus {
+                border-color: @caution-color;
+            }
+        }
+
+        &.input-danger {
+            &:focus {
+                border-color: @danger-color;
+            }
+        }
+    }
+}
+
+/// =========== Input Group Declaration =========== ///
+
+& {
+    .input-group {
+        .plat-input {
+            width: 100%;
+
+            &:not(.input-outline) {
+                &:not(:first-child) {
+                    padding-left: 0.5em;
+                }
+
+                &:not(:last-child) {
+                    padding-right: 0.5em;
+                }
+            }
+        }
+
+        [class*="col-"]:not(:first-child) {
+            .plat-input:not(.input-outline) {
+                padding-left: 0.5em;
+            }
+        }
+
+        [class*="col-"]:not(:last-child) {
+            .plat-input:not(.input-outline) {
+                padding-right: 0.5em;
+            }
+        }
+    }
+}

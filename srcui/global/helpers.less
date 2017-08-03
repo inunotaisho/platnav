@@ -1,0 +1,48 @@
+@import (reference) 'variables.less';
+@import (reference) '../mixins/media.less';
+
+/// ========== PlatypusUI Helper Classes =========== ///
+
+
+/// =========== Hide Content for Width ============= ///
+
+& {
+    #platui > #variables;
+    #platui > #media;
+
+    .phn-max({
+	    .hide-on-@{phone-alias} {
+		    display: none !important;
+	    }
+    });
+
+    .phb-max({
+	    .hide-on-@{phablet-alias} {
+		    display: none !important;
+	    }
+    });
+
+    .tab-max({
+	    .hide-on-@{tablet-alias} {
+		    display: none !important;
+	    }
+    });
+
+    .phb({
+	    .hide-above-@{phone-alias} {
+		    display: none !important;
+	    }
+    });
+
+    .tab({
+	    .hide-above-@{phablet-alias} {
+		    display: none !important;
+	    }
+    });
+
+    .dsk({
+	    .hide-above-@{tablet-alias} {
+		    display: none !important;
+	    }
+    });
+}

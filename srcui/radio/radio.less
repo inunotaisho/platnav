@@ -1,0 +1,53 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) '../mixins/flexbox.less';
+@import (reference) 'radio.variables.less';
+
+/// =========== Radio Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Radio;
+
+    .plat-radio {
+        .flex-vertical-center(true);
+        .box-sizing(border-box);
+        cursor: pointer;
+
+        & > span {
+            line-height: 1.2;
+
+            &:first-of-type {
+                padding-left: 0.4em;
+            }
+        }
+
+        .plat-radio-container {
+            .flex(0 0 @diameter);
+            .border-radius(50%);
+            .background-clip(padding-box);
+            .box-sizing(border-box);
+            position: relative;
+            display: inline-block;
+            width: @diameter;
+            max-width: @diameter;
+            height: @diameter;
+            max-height: @diameter;
+            background-color: @background-color;
+            border: @border-width solid @border-color;
+
+            &.plat-bullet {
+                border-color: @active-border-color;
+
+                .plat-mark {
+                    .border-radius(50%);
+                    .background-clip(padding-box);
+                    .box-sizing(border-box);
+                    background-color: @mark-color;
+                    width: 100%;
+                    height: 100%;
+                    border: @mark-padding solid @active-background-color;
+                }
+            }
+        }
+    }
+}

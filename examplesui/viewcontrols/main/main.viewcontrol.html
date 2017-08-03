@@ -1,0 +1,671 @@
+<div class="container">
+    <!-- loaders -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Loaders</h2>
+        <input type="checkbox" id="loaders">
+        <label for="loaders"></label>
+        <div class="demo-stage">
+            <plat-ring class="red-ring"></plat-ring>
+            <plat-ring plat-options="{ style: 1 }"></plat-ring>
+            <plat-ring plat-options="{ style: 2 }"></plat-ring>
+        </div>
+    </div>
+
+    <!-- images -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Images</h2>
+        <input type="checkbox" id="images">
+        <label for="images"></label>
+        <div class="demo-stage">
+            <plat-image class="col-tab-3 small image-center" plat-src="{{url1}}"></plat-image>
+            <plat-image class="col-tab-3" plat-src="{{url2}}"></plat-image>
+        </div>
+    </div>
+
+    <!-- Listview -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Listview</h2>
+        <input type="checkbox" id="listview">
+        <label for="listview"></label>
+        <div class="demo-stage">
+            <button plat-tap="addListItem">add</button>
+            <button plat-tap="popListItem">pop</button>
+            <div class="demo-item">
+                <plat-listview style="height: 100px;" plat-context="groupedlistview"
+                               plat-options="{
+                                   orientation: 'horizontal',
+                                   itemTemplate: 'listview-template',
+                                   headerTemplate: 'listview-header',
+                                   onRefresh: 'refresh',
+                                   loading: 'incremental',
+                                   onItemsRequested: 'refresh'
+                               }">
+                    <listview-header>
+                        <div>{{group}}</div>
+                    </listview-header>
+                    <listview-template>
+                        <div style="color: red;">{{@context}}</div>
+                    </listview-template>
+                    <listview-template2>
+                        <div style="color: blue;">{{@index}}</div>
+                    </listview-template2>
+                </plat-listview>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form/Input -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Forms</h2>
+        <input type="checkbox" id="forms" />
+        <label for="forms"></label>
+        <div class="demo-stage">
+            <h4>Inputs</h4>
+            <p>Text Input</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-input type="text" placeholder="First Name" />
+                </div>
+                <div class="demo-item-inline">
+                    <plat-input type="text" placeholder="Last Name" />
+                </div>
+            </div>
+            <p>Password Input</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-input type="password" placeholder="Password">Enter text here...</plat-input>
+                </div>
+            </div>
+            <p>Email Input</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-input type="email" plat-bind="email">Email</plat-input>
+                </div>
+            </div>
+
+            <p>Select Input</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-select plat-options="{ default: { value: '', textContent: '--' }}" plat-context="states">
+                        <option value="{{@context}}">{{@context}}</option>
+                    </plat-select>
+                </div>
+            </div>
+
+            <p>File Input</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-file multiple></plat-file>
+                </div>
+            </div>
+
+            <h4>Input Groups</h4>
+            <p>Combines input-group with the grid system.</p>
+            <div class="demo-item">
+                <div class="input-group-container">
+                    <div class="input-group">
+                        <div class="row">
+                            <div class="col-dsk-6">
+                                <plat-input type="text" placeholder="First Name"></plat-input>
+                            </div>
+                            <div class="col-dsk-6">
+                                <plat-input type="text" placeholder="Last Name"></plat-input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-dsk-12">
+                                <plat-input type="email" placeholder="Email"></plat-input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-dsk-12">
+                                <plat-input type="text" placeholder="Street Address"></plat-input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-dsk-6">
+                                <plat-input type="text" placeholder="City"></plat-input>
+                            </div>
+                            <div class="col-dsk-2">
+                                <plat-input type="text" placeholder="State"></plat-input>
+                            </div>
+                            <div class="col-dsk-4">
+                                <plat-input type="text" placeholder="Zip"></plat-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Checkboxes/Radios -->
+            <h4>Checkboxes and Radios</h4>
+            <p>Default Style</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-checkbox plat-bind="checks.HTML">HTML</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox plat-bind="checks.CSS">CSS</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox plat-options="{ mark: 'x' }" plat-bind="checks.JavaScript">JavaScript</plat-checkbox>
+                </div>
+            </div>
+            <p>Colors</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-primary" checked>Cooking</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-secondary" checked>Sports</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-success" checked>Croquet</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-caution" checked>Knife Fighting</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-danger" checked>Bloodletting</plat-checkbox>
+                </div>
+            </div>
+            <p>Square Style</p>
+            <div class="demo-item">
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-square checkbox-primary" checked>Phone</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-square checkbox-secondary" checked>Email</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox class="checkbox-square checkbox-success" checked>Carrier Pigeon</plat-checkbox>
+                </div>
+                <div class="demo-item-inline">
+                    <plat-checkbox plat-options="{ mark: 'x' }" class="checkbox-square" checked>Signal Lamp</plat-checkbox>
+                </div>
+            </div>
+            <p>Radios</p>
+            <div class="demo-item">
+                <plat-radio plat-bind="text" plat-tap="foo">Not interested</plat-radio>
+                </div>
+            <div class="demo-item">
+                <plat-radio plat-bind="text">Somewhat interested</plat-radio>
+                </div>
+            <div class="demo-item">
+                <plat-radio plat-bind="text">Definitely interested</plat-radio>
+            </div>
+
+            <!-- Sliders -->
+            <h4>Ranges</h4>
+            <p>Slider</p>
+            <div class="demo-item">
+                <plat-slider plat-bind="sliders.slider1" style="width: 400px;"></plat-slider>
+            </div>
+            <div class="demo-item">
+                <plat-slider plat-bind="sliders.slider2" style="width: 400px;" class="slider-primary"></plat-slider>
+            </div>
+            <div class="demo-item">
+                <plat-slider plat-bind="sliders.slider3" style="width: 400px;" class="slider-secondary"></plat-slider>
+            </div>
+            <div class="demo-item">
+                <plat-slider plat-bind="sliders.slider4" style="width: 400px;" class="slider-outline"></plat-slider>
+            </div>
+            <p>Range</p>
+            <div class="demo-item">
+                <div class="demo-item">
+                    <plat-range plat-bind="ranges.range1" style="width: 400px;"></plat-range>
+                </div>
+                <div class="demo-item">
+                    <plat-range plat-bind="ranges.range2" style="width: 400px;" class="range-secondary"></plat-range>
+                </div>
+                <div class="demo-item">
+                    <plat-range plat-bind="ranges.range3" style="width: 400px;" class="range-caution"></plat-range>
+                </div>
+                <div class="demo-item">
+                    <plat-range plat-bind="ranges.range4" style="width: 400px;" class="range-outline"></plat-range>
+                </div>
+            </div>
+
+            <!-- Toggle -->
+            <h4>Toggle</h4>
+            <p>Default Style</p>
+            <div class="demo-item">
+                <plat-toggle></plat-toggle>
+                <plat-toggle class="toggle-primary"></plat-toggle>
+                <plat-toggle class="toggle-secondary"></plat-toggle>
+                <plat-toggle class="toggle-danger"></plat-toggle>
+                <plat-toggle class="toggle-caution"></plat-toggle>
+            </div>
+            <p>Square Style</p>
+            <div class="demo-item">
+                <plat-toggle class="toggle-square"></plat-toggle>
+                <plat-toggle class="toggle-square toggle-primary"></plat-toggle>
+            </div>
+            <p>Thin Style</p>
+            <div class="demo-item">
+                <plat-toggle class="toggle-thin toggle-square toggle-primary"></plat-toggle>
+                <plat-toggle class="toggle-thin"></plat-toggle>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Buttons</h2>
+        <input type="checkbox" id="buttons" />
+        <label for="buttons"></label>
+        <div class="demo-stage">
+            <p>Colors</p>
+            <plat-button class="button-primary">Primary</plat-button>
+            <plat-button class="button-secondary">Secondary</plat-button>
+            <plat-button class="button-neutral">Neutral</plat-button>
+            <plat-button class="button-success">Success</plat-button>
+            <plat-button class="button-danger">Danger</plat-button>
+            <plat-button class="button-caution">Caution</plat-button>
+            <p>Alternate Styles</p>
+            <plat-button class="button-primary button-outline">Primary</plat-button>
+            <plat-button class="button-secondary button-outline">Secondary</plat-button>
+            <plat-button class="button-neutral button-outline">Neutral</plat-button>
+            <plat-button class="button-success button-outline">Success</plat-button>
+            <plat-button class="button-danger button-outline">Danger</plat-button>
+            <plat-button class="button-caution button-outline">Caution</plat-button>
+            <p>Sizes</p>
+            <plat-button class="button-primary button-jumbo">Jumbo</plat-button>
+            <plat-button class="button-primary button-large">Large</plat-button>
+            <plat-button class="button-primary">Regular</plat-button>
+            <plat-button class="button-primary button-small">Small</plat-button>
+            <p>States</p>
+            <plat-button class="button-primary" disabled>Disabled</plat-button>
+            <plat-button class="button-danger button-large" disabled>Disabled</plat-button>
+            <p>Groups</p>
+            <div class="demo-item">
+                <div class="button-group">
+                    <plat-button plat-options="{ group: 'controls' }" class="button-primary">Select</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-primary">Copy</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-primary">Paste</plat-button>
+                </div>
+            </div>
+            <div class="demo-item">
+                <div class="button-group">
+                    <plat-button plat-options="{ group: 'other' }" class="button-outline button-success">Select</plat-button>
+                    <plat-button plat-options="{ group: 'other' }" class="button-outline button-success">Copy</plat-button>
+                    <plat-button plat-options="{ group: 'other' }" class="button-outline button-success">Paste</plat-button>
+                    <plat-button plat-options="{ group: 'other' }" class="button-outline button-success">Undo</plat-button>
+                </div>
+            </div>
+            <div class="demo-item">
+                <div class="button-group">
+                    <plat-button plat-options="{ group: 'controls' }" class="button-secondary">Select</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-secondary">Copy</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-secondary">Paste</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-secondary">Undo</plat-button>
+                    <plat-button plat-options="{ group: 'controls' }" class="button-secondary">Redo</plat-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bars -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Progress Bars</h2>
+        <input type="checkbox" id="progress" />
+        <label for="progress"></label>
+        <div class="demo-stage">
+            <div class="demo-item">
+                <plat-progress plat-context="progress"></plat-progress>
+            </div>
+            <div class="demo-item">
+                <plat-progress plat-context="progress" class="progress-primary"></plat-progress>
+            </div>
+            <div class="demo-item">
+                <plat-progress plat-context="progress" class="progress-secondary"></plat-progress>
+            </div>
+            <div class="demo-item">
+                <plat-progress plat-context="progress" class="progress-success"></plat-progress>
+            </div>
+            <div class="demo-item">
+                <plat-progress plat-context="progress" class="progress-caution"></plat-progress>
+            </div>
+            <plat-button plat-tap="bar">Make Progress!</plat-button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Modals</h2>
+        <input type="checkbox" id="modal" />
+        <label for="modal"></label>
+        <div class="demo-stage">
+            <h4>Popovers</h4>
+            <plat-button class="button-primary" plat-tap="toggleModal('modal1')">Basic Popover, Fade Transition</plat-button>
+            <plat-button class="button-secondary" plat-tap="toggleModal('modal2')">Button Row Popover, Down Transition</plat-button>
+            <h4>Modals</h4>
+            <plat-button class="button-primary" plat-tap="toggleModal('modal3')">Full Screen, Up Transition</plat-button>
+            <plat-button class="button-secondary" plat-tap="toggleModal('modal4')">Full Screen, Left Transition</plat-button>
+        </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Typography</h2>
+        <input type="checkbox" id="typography" />
+        <label for="typography"></label>
+        <div class="demo-stage">
+            <h1>Heading 1: The biggest impact</h1>
+            <h2>Heading 2: Still pretty boisterous</h2>
+            <h3>Heading 3: Kinda loud, kinda not</h3>
+            <h4>Heading 4: Getting softer now</h4>
+            <h5>Heading 5: Pretty much just bolded body text</h5>
+            <h6>Heading 6: Not sure why you'd use this</h6>
+            <p>Some paragraph text with a link: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus quasi asperiores laborum, quam est aliquid ea. Dicta <a href="#">dignissimos maxime at</a> ad quam officia nemo fugit, eveniet molestias dolor facilis, libero.</p>
+            <blockquote>
+                Not all those who wander are lost.
+                <cite>J.R.R. Tolkien</cite>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Grid</h2>
+        <input type="checkbox" id="grid" />
+        <label for="grid"></label>
+        <div class="demo-stage grid-demo">
+            <h3>Desktop</h3>
+            <div class="row">
+                <div class="col-dsk-12">
+                    <div>col-dsk-12</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-dsk-9">
+                    <div>col-dsk-9</div>
+                </div>
+                <div class="col-dsk-3">
+                    <div>col-dsk-3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-dsk-4 col-dsk-push-8">
+                    <div>col-dsk-4 col-dsk-push-8</div>
+                </div>
+                <div class="col-dsk-8 col-dsk-pull-4">
+                    <div>col-dsk-8 col-dsk-pull-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-dsk-6">
+                    <div>col-dsk-6</div>
+                </div>
+                <div class="col-dsk-6">
+                    <div>col-dsk-6</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-dsk-2 col-dsk-offset-2">
+                    <div>col-dsk-2 col-dsk-offset-2</div>
+                </div>
+                <div class="col-dsk-4">
+                    <div>col-dsk-4</div>
+                </div>
+                <div class="col-dsk-4">
+                    <div>col-dsk-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-dsk-3 col-phb-6">
+                    <div>col-dsk-3 col-phb-6</div>
+                </div>
+                <div class="col-dsk-3 col-phb-6">
+                    <div>col-dsk-3 col-phb-6</div>
+                </div>
+                <div class="col-dsk-3 col-phb-6">
+                    <div>col-dsk-3 col-phb-6</div>
+                </div>
+                <div class="col-dsk-3 col-phb-6">
+                    <div>col-dsk-3 col-phb-6</div>
+                </div>
+            </div>
+
+            <!-- Tablet -->
+            <h3>Tablet</h3>
+            <div class="row">
+                <div class="col-tab-12">
+                    <div>col-tab-12</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-tab-9">
+                    <div>col-tab-9</div>
+                </div>
+                <div class="col-tab-3">
+                    <div>col-tab-3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-tab-8">
+                    <div>col-tab-8</div>
+                </div>
+                <div class="col-tab-4">
+                    <div>col-tab-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-tab-6">
+                    <div>col-tab-6</div>
+                </div>
+                <div class="col-tab-6">
+                    <div>col-tab-6</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-tab-4">
+                    <div>col-tab-4</div>
+                </div>
+                <div class="col-tab-4">
+                    <div>col-tab-4</div>
+                </div>
+                <div class="col-tab-4">
+                    <div>col-tab-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-tab-3">
+                    <div>col-tab-3</div>
+                </div>
+                <div class="col-tab-3">
+                    <div>col-tab-3</div>
+                </div>
+                <div class="col-tab-3">
+                    <div>col-tab-3</div>
+                </div>
+                <div class="col-tab-3">
+                    <div>col-tab-3</div>
+                </div>
+            </div>
+
+            <!-- Phablet -->
+            <h3>Phablet</h3>
+            <div class="row">
+                <div class="col-phb-12">
+                    <div>col-phb-12</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phb-9">
+                    <div>col-phb-9</div>
+                </div>
+                <div class="col-phb-3">
+                    <div>col-phb-3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phb-8">
+                    <div>col-phb-8</div>
+                </div>
+                <div class="col-phb-4">
+                    <div>col-phb-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phb-6">
+                    <div>col-phb-6</div>
+                </div>
+                <div class="col-phb-6">
+                    <div>col-phb-6</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phb-4">
+                    <div>col-phb-4</div>
+                </div>
+                <div class="col-phb-4">
+                    <div>col-phb-4</div>
+                </div>
+                <div class="col-phb-4">
+                    <div>col-phb-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phb-3">
+                    <div>col-phb-3</div>
+                </div>
+                <div class="col-phb-3">
+                    <div>col-phb-3</div>
+                </div>
+                <div class="col-phb-3">
+                    <div>col-phb-3</div>
+                </div>
+                <div class="col-phb-3">
+                    <div>col-phb-3</div>
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <h3>Phone</h3>
+            <div class="row">
+                <div class="col-phn-12">
+                    <div>col-phn-12</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phn-9">
+                    <div>col-phn-9</div>
+                </div>
+                <div class="col-phn-3">
+                    <div>col-phn-3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phn-8">
+                    <div>col-phn-8</div>
+                </div>
+                <div class="col-phn-4">
+                    <div>col-phn-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phn-6">
+                    <div>col-phn-6</div>
+                </div>
+                <div class="col-phn-6">
+                    <div>col-phn-6</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phn-4">
+                    <div>col-phn-4</div>
+                </div>
+                <div class="col-phn-4">
+                    <div>col-phn-4</div>
+                </div>
+                <div class="col-phn-4">
+                    <div>col-phn-4</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-phn-3 col-phb-4">
+                    <div>col-phn-3 col-phb-4</div>
+                </div>
+                <div class="col-phn-3 col-phb-4">
+                    <div>col-phn-3 col-phb-4</div>
+                </div>
+                <div class="col-phn-3 col-phb-4">
+                    <div>col-phn-3 col-phb-4</div>
+                </div>
+                <div class="col-phn-3 col-phb-4">
+                    <div>col-phn-3 col-phb-4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Carousel</h2>
+        <input type="checkbox" id="carousel" />
+        <label for="carousel"></label>
+        <div class="demo-stage">
+            <plat-carousel plat-context="carouselItems" style="width: 800px; height: 400px;" plat-options="{type:'tap', infinite: true}">
+                <div class="carousel-item" plat-style="background-color: {{bg}};">
+                    <span>{{text}}</span>
+                </div>
+            </plat-carousel>
+        </div>
+    </div>
+
+    <!-- Other -->
+    <div class="demo-area">
+        <h2 class="demo-heading">Other</h2>
+        <input type="checkbox" id="other" />
+        <label for="other"></label>
+        <div class="demo-stage">
+            <p>Drawer</p>
+            <div class="demo-item">
+                <plat-drawer-controller style="font-size: 300%;">|||</plat-drawer-controller>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals for Above Examples -->
+<plat-modal plat-name="modal1" plat-options="{ transition: 'fade' }" plat-bind="modals.modal1" class="modal-prompt">
+    <div class="prompt-title">For Your Information</div>
+    <div class="prompt-body">
+        <p>We suggest checking yourself because the trajectory you're are on leads to wrecking yourself.</p>
+    </div>
+    <div class="prompt-action">
+        <plat-button class="button-danger" plat-tap="toggleModal('modal1')">Cancel</plat-button>
+        <plat-button class="button-primary" plat-tap="toggleModal('modal1')">Continue</plat-button>
+    </div>
+</plat-modal>
+<plat-modal plat-name="modal2" plat-options="{ transition: 'right' }" plat-bind="modals.modal2" class="modal-prompt">
+    <div class="prompt-title">Once Again</div>
+    <div class="prompt-body">
+        <p>We suggest checking yourself because the trajectory you're are on leads to wrecking yourself.</p>
+    </div>
+    <div class="prompt-action button-group">
+        <plat-button plat-tap="toggleModal('modal2')">Cancel</plat-button>
+        <plat-button class="button-suggested" plat-tap="toggleModal('modal2')">Continue</plat-button>
+    </div>
+</plat-modal>
+<plat-modal plat-name="modal3" plat-options="{ transition: 'up' }" plat-bind="modals.modal3" class="modal-prompt">
+    <div class="prompt-title">Once Again</div>
+    <div class="prompt-body">
+        <p>We suggest checking yourself because the trajectory you're are on leads to wrecking yourself.</p>
+    </div>
+    <div class="prompt-action button-group">
+        <plat-button class="button-primary" plat-tap="toggleModal('modal3')">Continue</plat-button>
+        <plat-button class="button-danger" plat-tap="toggleModal('modal3')">Cancel</plat-button>
+    </div>
+</plat-modal>
+<plat-modal plat-name="modal4" plat-options="{ transition: 'left' }" plat-bind="modals.modal4" class="modal-prompt">
+    <div class="prompt-title">Once Again</div>
+    <div class="prompt-body">
+        <p>We suggest checking yourself because the trajectory you're are on leads to wrecking yourself.</p>
+    </div>
+    <div class="prompt-action button-group">
+        <plat-button class="button-primary" plat-tap="toggleModal('modal4')">Continue</plat-button>
+        <plat-button class="button-danger" plat-tap="toggleModal('modal4')">Cancel</plat-button>
+    </div>
+</plat-modal>

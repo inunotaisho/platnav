@@ -1,0 +1,123 @@
+﻿@import (reference) '../mixins/helpers.less';
+@import (reference) '../mixins/touch.less';
+@import (reference) '../mixins/transforms.less';
+@import (reference) '../mixins/transitions.less';
+@import (reference) 'drawer.variables.less';
+
+/// =========== Drawer Controller Default Styles =========== ///
+
+& {
+    #platui > #mixins;
+
+    .plat-drawer-controller {
+        &.plat-horizontal {
+            .touch-action(pan-y);
+        }
+
+        &.plat-vertical {
+            .touch-action(pan-x);
+        }
+    }
+}
+
+/// =========== Drawer Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Drawer;
+
+    .plat-drawer {
+        .scroll();
+        .box-sizing(border-box);
+        .backface-visibility(hidden);
+        position: absolute;
+        color: @color;
+        z-index: 0;
+        background-color: @background-color;
+
+        &.plat-left,
+        &.plat-right {
+            height: 100%;
+            top: 0;
+        }
+
+        &.plat-top,
+        &.plat-bottom {
+            width: 100%;
+            left: 0;
+        }
+
+        &.plat-left {
+            width: @length-left;
+            left: 0;
+        }
+
+        &.plat-right {
+            width: @length-right;
+            right: 0;
+        }
+
+        &.plat-top {
+            height: @length-top;
+            top: 0;
+        }
+
+        &.plat-bottom {
+            height: @length-bottom;
+            bottom: 0;
+        }
+    }
+}
+
+/// =========== Drawer Controller Root Element Declaration =========== ///
+
+& {
+    #platui > #mixins;
+    #platui > #Drawer;
+
+    .plat-drawer-root {
+        .backface-visibility(hidden);
+        .perspective(none);
+        position: relative;
+        z-index: 1;
+
+        &.plat-drawer-transition-left,
+        &.plat-drawer-transition-right,
+        &.plat-drawer-transition-top,
+        &.plat-drawer-transition-bottom {
+            .user-select(none);
+            .touch-action(none);
+
+            .plat-clickeater {
+                .fill();
+                .touch-action(none);
+                position: absolute;
+                background-color: transparent;
+                overflow: hidden;
+                z-index: @global-max-z-index;
+            }
+        }
+
+        &.plat-drawer-transition-left {
+            .box-shadow(@shadow-left);
+        }
+
+        &.plat-drawer-transition-right {
+            .box-shadow(@shadow-right);
+        }
+
+        &.plat-drawer-transition-top {
+            .box-shadow(@shadow-top);
+        }
+
+        &.plat-drawer-transition-bottom {
+            .box-shadow(@shadow-bottom);
+        }
+
+        &.plat-transition-init {
+            -webkit-transition: -webkit-transform @transition-time @transition-function;
+            -moz-transition: -moz-transform @transition-time @transition-function;
+            transition: transform @transition-time @transition-function;
+        }
+    }
+}

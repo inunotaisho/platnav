@@ -1,0 +1,129 @@
+﻿@import 'loopers.less';
+
+#platui {
+    #mixins {
+        /// Frequently used
+
+        .calc(@prop; @val) {
+          @{prop}: -webkit-calc(~'@{val}');
+          @{prop}: calc(~'@{val}');
+        }
+
+        .fill() {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        /// Border Radius
+
+        .border-radius(@radius) {
+            #platui > #variables;
+            .border-radius(@radius; @webkit-list);
+        }
+        .border-radius(@radius; @vendor-list) {
+            #platui > #__mixins;
+            .vendor-loop(border-top-left-radius; @radius; @vendor-list);
+            .vendor-loop(border-top-right-radius; @radius; @vendor-list);
+            .vendor-loop(border-bottom-left-radius; @radius; @vendor-list);
+            .vendor-loop(border-bottom-right-radius; @radius; @vendor-list);
+        }
+
+        .border-top-left-radius(@radius) {
+            #platui > #variables;
+            .border-top-left-radius(@radius; @webkit-list);
+        }
+        .border-top-left-radius(@radius; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(border-top-left-radius; @radius; @vendor-list);
+        }
+
+        .border-top-right-radius(@radius) {
+            #platui > #variables;
+            .border-top-right-radius(@radius; @webkit-list);
+        }
+        .border-top-right-radius(@radius; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(border-top-right-radius; @radius; @vendor-list);
+        }
+
+        .border-bottom-left-radius(@radius) {
+            #platui > #variables;
+            .border-bottom-left-radius(@radius; @webkit-list);
+        }
+        .border-bottom-left-radius(@radius; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(border-bottom-left-radius; @radius; @vendor-list);
+        }
+
+        .border-bottom-right-radius(@radius) {
+            #platui > #variables;
+            .border-bottom-right-radius(@radius; @webkit-list);
+        }
+        .border-bottom-right-radius(@radius; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(border-bottom-right-radius; @radius; @vendor-list);
+        }
+
+        /// Background Clip
+
+        .background-clip(@box) when (@box = border-box), (@box = border) {
+            -moz-background-clip: border;
+            -webkit-background-clip: border;
+            background-clip: border-box;
+        }
+        .background-clip(@box) when (@box = padding-box), (@box = padding) {
+            -moz-background-clip: padding;
+            -webkit-background-clip: padding;
+            background-clip: padding-box;
+        }
+        .background-clip(@box) when (@box = content-box), (@box = content) {
+            -moz-background-clip: content;
+            -webkit-background-clip: content;
+            background-clip: content-box;
+        }
+        .background-clip(@box) when (default()) {
+            -moz-background-clip: @box;
+            -webkit-background-clip: @box;
+            background-clip: @box;
+        }
+
+        /// Box Shadows
+
+        .box-shadow(@args) {
+            #platui > #variables;
+            .box-shadow(@args; @webkit-list);
+        }
+        .box-shadow(@args; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(box-shadow; @args; @vendor-list);
+        }
+
+        /// Box Sizing
+
+        .box-sizing(@args: border-box) {
+            #platui > #variables;
+            .box-sizing(@args; @webkit-moz-list);
+        }
+        .box-sizing(@args; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(box-sizing; @args; @vendor-list);
+        }
+
+        /// Appearance
+        // only common values are none, button, checkbox, scrollbarbutton-up
+
+        .appearance(@args: none) {
+            #platui > #variables;
+            .appearance(@args; @webkit-moz-list);
+        }
+        .appearance(@args; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(appearance; @args; @vendor-list);
+        }
+
+        /// Backface Visibility
+
+        .backface-visibility(@arg: visible) {
+            #platui > #variables;
+            .backface-visibility(@arg; @webkit-list);
+        }
+        .backface-visibility(@arg; @vendor-list) {
+            #platui > #__mixins > .vendor-loop(backface-visibility; @arg; @vendor-list);
+        }
+    }
+}
