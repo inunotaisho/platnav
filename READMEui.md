@@ -10,7 +10,7 @@ A suite of controls built using PlatypusTS
 
 ## Install
 
-You can use either `npm` or `bower` to install the packaged version of PlatypusUI.
+You can use either `npm` to install the packaged version of PlatypusUI.
 
 ### npm
 
