@@ -6,6 +6,7 @@ Platypus drawer for ReactJS (.tsx) and Angular (.ts)
 + [PlatypusUI](https://www.npmjs.com/package/platypusui) with [Github Link](https://github.com/Platypi/platypusui)
 + [PlatypusTS](https://www.npmjs.com/package/platypus) with [Github Link](https://github.com/Platypi/platypusts)
 + [Platypi Documentation](http://platypusts.com/docs/api)
++ [Typescript Documentation](https://www.typescriptlang.org/docs/home.html)
 
 # Steps to creating platnav plugin
 
