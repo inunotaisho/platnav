@@ -1,7 +1,7 @@
 # Platdrawer
 Platypus drawer for ReactJS (.tsx) and Angular (.ts)
 
-# Steps to creating platnave plugin
+# Steps to creating platnav plugin
 
 + First step is to isolate the internal dependencies needed by the navbar and drawer. These dependencies are to be moved from `srcui` and `srcts` to to `src`. 
     
