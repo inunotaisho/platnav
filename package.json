@@ -1,0 +1,19 @@
+{
+  "name": "platdrawer",
+  "version": "0.0.1",
+  "description": "A Angular and ReactJS typescript plugin for Platypi Drawer and Navbar",
+  "main": "dist/platdrawer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inunotaisho26/platdrawer.git"
+  },
+  "author": "犬の大将 aka Ethan Burrow Fairweather",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inunotaisho26/platdrawer/issues"
+  },
+  "homepage": "https://github.com/inunotaisho26/platdrawer#readme"
+}
