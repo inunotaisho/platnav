@@ -76,8 +76,6 @@ let __prefix = '$',
      * Animations
      */
     __Transition = `${__Plat}transition`,
-    __Enter = `${__Plat}enter`,
-    __Leave = `${__Plat}leave`,
 
     /**
      * Events
