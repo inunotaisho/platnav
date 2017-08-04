@@ -154,7 +154,7 @@ $RECYCLE.BIN/
 .DS_Store
 
 # TypeScript
-
+*.js
 *.js.map
 
 coverage
