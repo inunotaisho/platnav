@@ -1,6 +1,12 @@
 # Platdrawer
 Platypus drawer for ReactJS (.tsx) and Angular (.ts)
 
+#Original PlatypusUI and PlatypusTS packages along with documentation.
+
++ [PlatypusUI](https://www.npmjs.com/package/platypusui) with [Github Link](https://github.com/Platypi/platypusui)
++ [PlatypusTS](https://www.npmjs.com/package/platypus) with [Github Link](https://github.com/Platypi/platypusts)
++ [Platypi Documentation](http://platypusts.com/docs/api)
+
 # Steps to creating platnav plugin
 
 + First step is to isolate the internal dependencies needed by the navbar and drawer. These dependencies are to be moved from `srcui` and `srcts` to to `src`. 
