@@ -2,7 +2,7 @@ module plat.ui {
     'use strict';
 
     /**
-     * @name TemplateControl
+     * @name reactControl
      * @memberof plat.ui
      * @kind class
      *
@@ -12,10 +12,10 @@ module plat.ui {
      * The base control for any control that affects the UI. They provide properties for the control to use
      * to manage its body HTML.
      */
-    export class TemplateControl extends Control {
+    export class reactControl extends ui {
         /**
          * @name _ResourcesFactory
-         * @memberof plat.ui.TemplateControl
+         * @memberof plat.ui.reactControl
          * @kind property
          * @access protected
          * @static
@@ -29,7 +29,7 @@ module plat.ui {
 
         /**
          * @name _BindableTemplatesFactory
-         * @memberof plat.ui.TemplateControl
+         * @memberof plat.ui.reactControl
          * @kind property
          * @access protected
          * @static
@@ -420,7 +420,7 @@ module plat.ui {
 
         /**
          * @name evaluateExpression
-         * @memberof plat.ui.TemplateControl
+         * @memberof plat.ui.reactControl
          * @kind function
          * @access public
          * @static
@@ -436,10 +436,10 @@ module plat.ui {
          *
          * @returns {any} The evaluated object.
          */
-        static evaluateExpression(expression: string, control?: TemplateControl, aliases?: IObject<any>): any;
+        static evaluateExpression(expression: string, control?: reactControl, aliases?: IObject<any>): any;
         /**
          * @name evaluateExpression
-         * @memberof plat.ui.TemplateControl
+         * @memberof plat.ui.reactControl
          * @kind function
          * @access public
          * @static
@@ -456,8 +456,8 @@ module plat.ui {
          *
          * @returns {any} The evaluated object.
          */
-        static evaluateExpression(expression: expressions.IParsedExpression, control?: TemplateControl, aliases?: IObject<any>): any;
-        static evaluateExpression(expression: any, control?: TemplateControl, aliases?: IObject<any>): any {
+        static evaluateExpression(expression: expressions.IParsedExpression, control?: reactControl, aliases?: IObject<any>): any;
+        static evaluateExpression(expression: any, control?: reactControl, aliases?: IObject<any>): any {
             if (isEmpty(expression)) {
                 return expression;
             }
@@ -473,7 +473,7 @@ module plat.ui {
             }
 
             if (expression.aliases.length > 0) {
-                aliases = TemplateControl.getResources(control, expression.aliases, aliases);
+                aliases = reactControl.getResources(ui, expression.aliases, aliases);
 
                 if (isEmpty(aliases)) {
                     return;
@@ -485,7 +485,7 @@ module plat.ui {
 
         /**
          * @name getResources
-         * @memberof plat.ui.TemplateControl
+         * @memberof plat.ui.reactControl
          * @kind function
          * @access public
          * @static
@@ -1078,7 +1078,7 @@ module plat.ui {
     /**
      * The Type for referencing the '_TemplateControlFactory' injectable as a dependency.
      */
-    export function ITemplateControlFactory(
+    export function IReactControlFactory(
         _ResourcesFactory?: IResourcesFactory,
         _BindableTemplatesFactory?: IBindableTemplatesFactory,
         _managerCache?: storage.Cache<processing.ElementManager>,
